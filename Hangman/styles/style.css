@@ -1,0 +1,72 @@
+
+	/*use floating to create a 2-column, fixed-width page layout*/
+
+	/* basic setup */
+	article, aside, figure, footer, header, nav, section {
+	    display: block; 
+	}
+		
+	* {
+		margin: 0;
+		padding: 0; 
+	}
+		
+	/* html { background-color:#FACD8A; } */
+	html { 	
+		background-color:#009999; 
+	}
+
+	body {
+		width: 962px;
+		height: fit-content;
+		background-color: white;
+		margin: 15px auto;
+		border: 1px solid black; 
+	}
+		
+	header { 
+		border-bottom: 2px solid #006666; 
+	}
+		
+	h1 { 
+		padding: 10px;     
+		font-size: 2.5em;
+		text-align: center;
+	}
+
+	section { 
+		width: 600px;
+		float: right;
+		border-left: 2px solid #006666;
+	}
+
+	.center{
+		padding-top: 3em;
+		display: block;
+		margin:auto;
+	}
+
+	h2 { 
+		font-size: 1.5em;
+	}
+
+	div{
+		padding: 2em;
+		border: 1px solid #006666;
+	}
+
+	aside{
+		width: 360px;
+		float: left;
+	}
+	
+
+	footer {
+		clear: both;	
+		border-top: 2px solid #006666;
+	}
+	
+	p{
+		padding: 10px;
+		color: rgb(36, 70, 50);
+	}
