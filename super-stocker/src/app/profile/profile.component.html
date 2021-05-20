@@ -1,0 +1,25 @@
+<div class="container">
+    <form>
+        <div class="form-group">
+          <label for="usernameInput">Username</label>
+          <input [(ngModel)]="usernameInput" type="text" class="form-control" name="username" id="usernameInput" placeholder="Enter username">
+        </div>
+        <div class="form-group">
+          <label for="passwordInput">Password</label>
+          <input [(ngModel)]="passwordInput" type="password" class="form-control" name="password" id="passwordInput" placeholder="Enter password">
+        </div>
+        <div class="form-group">
+          <label for="emailInput">Email</label>
+          <input [(ngModel)]="emailInput" type="text" class="form-control" name="email" id="emailInput" placeholder="Enter valid email">
+        </div>
+        <div class="form-group">
+          <label for="firstNameInput">First Name</label>
+          <input [(ngModel)]="firstNameInput" type="text" class="form-control" name="firstName" id="firstNameInput" placeholder="Enter first name">
+        </div>
+        <div class="form-group">
+          <label for="lastNameInput">Last Name</label>
+          <input [(ngModel)]="lastNameInput" type="text" class="form-control" name="lastName" id="lastNameInput" placeholder="Enter last name">
+        </div>
+        <button (click)="updateUser()" class="btn btn-primary">Update</button>
+      </form>
+</div>
