@@ -1,12 +1,32 @@
 <form>
     <div class="form-group">
-      <label for="stockInput">Username</label>
+      <label for="stockInput">Stock Symbol:</label>
       <input [(ngModel)]="stockInput" type="text" class="form-control" name="stock" id="stockInput" placeholder="Enter stock symbol">
       <button (click)="addStock()" class="btn btn-success">Submit</button>
     </div>
   </form>
 
-<table class="table">
+<div *ngIf="stocks.length == 0">
+    <h3>No stocks in portfolio. Try adding some!</h3>
+</div>
+
+<div class="stock-cards">
+    <a *ngFor="let stock of stocks" routerLink="/detail/{{stock.symbol}}" routerLink="/detail/{{stock.symbol}}">
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>{{stock.symbol}}</mat-card-title>
+                <mat-card-subtitle>{{stock.name}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <p>{{stock.exchange}}</p>
+                <p>{{stock.type}}</p>
+                <p>{{stock.price}}</p>
+            </mat-card-content>
+        </mat-card>
+    </a>
+</div>
+
+<!-- <table class="table">
     <thead>
         <tr>
             <th>Name</th>
@@ -35,4 +55,4 @@
             </tr>
         </ng-container>
     </tbody>
-</table>
+</table> -->
