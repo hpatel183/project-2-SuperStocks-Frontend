@@ -22,10 +22,10 @@ export class LogoutComponent implements OnInit {
 
   ngOnInit(): void {
     this.userService.logoutUser().subscribe((response) => {
-       this.logoutMessage = response.message;
-       setTimeout(() => {
-         this.router.navigate(['/login']);
-       }, 1000);
+      this.logoutMessage = response.message;
+        setTimeout(() => {
+          this.router.navigate(['/login']);
+        }, 1000);
     });
   }
 

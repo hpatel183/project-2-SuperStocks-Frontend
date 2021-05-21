@@ -70,7 +70,7 @@ export class UserService {
   }
 
   logoutUser(): Observable<Message> {
-    return this.httpClient.post<Message>(`http://localhost:8080/SuperStocks/logout`, {
+    return this.httpClient.post<Message>(`http://localhost:8080/SuperStocks/logout`, {}, {
       withCredentials: true
     });
   }
