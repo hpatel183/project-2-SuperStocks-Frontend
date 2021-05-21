@@ -1,0 +1,9 @@
+<button (click)="goBack()" class="btn btn-info">Back to Dashboard</button>
+
+<div *ngIf="stock">
+    <p>{{stock.name}}</p>
+    <p>{{stock.symbol}}</p>
+
+    <button (click)="updatePrice()" class="btn btn-primary">Update</button>
+    <button (click)="deleteStock(stock.id)" class="btn btn-danger">Delete</button>
+</div>

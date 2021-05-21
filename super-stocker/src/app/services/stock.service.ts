@@ -23,7 +23,7 @@ export class StockService {
 
   }
 
-  addExistingStock(stockSymbol: string): Observable<Stock> {
+  getExistingStock(stockSymbol: string): Observable<Stock> {
 
     return this.httpClient.get<Stock>(`http://localhost:8080/SuperStocks/stock/${stockSymbol}`, {
       withCredentials: true

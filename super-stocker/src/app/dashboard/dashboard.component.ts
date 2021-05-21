@@ -12,7 +12,7 @@ export class DashboardComponent implements OnInit {
 
   stockService: StockService;
 
-  stocks: Array<Stock> = [];
+  stocks: Stock[] = [];
   stockInput: string;
 
   constructor(stockService: StockService) {
@@ -35,20 +35,11 @@ export class DashboardComponent implements OnInit {
   }
 
   addStock(): void {
-    this.stockService.addExistingStock(this.stockInput).subscribe((response) => {
+    this.stockService.getExistingStock(this.stockInput).subscribe((response) => {
       this.stockService.addStockToPortfolio(response).subscribe((stock) => {
         this.stocks.push(stock);
+        this.stockInput == "";
       });
-    });
-  }
-
-  updatePrice() {
-    // API call to update price
-  }
-
-  deleteStock(id: number): void {
-    this.stockService.deleteStock(id).subscribe((response) => {
-      this.getAllStocks();
     });
   }
 
