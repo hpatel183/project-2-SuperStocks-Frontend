@@ -4,6 +4,6 @@ a {
 
 mat-card {
     margin: 5px;
-    max-width: 200px;
+    width: 200px;
     display: inline-block;
 }

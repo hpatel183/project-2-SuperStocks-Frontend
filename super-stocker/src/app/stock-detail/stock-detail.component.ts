@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 
 import { Stock } from '../../model/Stock';
 import { StockService } from '../services/stock.service';
+import { TwelveDataService } from '../services/twelve-data.service';
 
 @Component({
   selector: 'app-stock-detail',
@@ -14,7 +15,7 @@ export class StockDetailComponent implements OnInit {
 
   stock: Stock;
 
-  constructor(private route: ActivatedRoute, private stockService: StockService, private location: Location) { }
+  constructor(private stockService: StockService, private twelveDataService: TwelveDataService, private route: ActivatedRoute, private location: Location) { }
 
   ngOnInit(): void {
     this.getStock();
@@ -28,8 +29,15 @@ export class StockDetailComponent implements OnInit {
     });
   }
 
-  updatePrice() {
-    // API call to update price
+  updatePrice(stock: Stock) {
+    this.twelveDataService.updateStockPrice(stock.symbol).subscribe((response) => {
+      console.log('Got new price, sending value to DB...');
+      // call to backend API to update DB
+      this.stockService.updatePrice(stock, response["price"]).subscribe((response) => {
+        console.log("Stock updated:", response);
+        this.stock.price = response.price;
+      });
+    })
   }
 
   deleteStock(id: number): void {

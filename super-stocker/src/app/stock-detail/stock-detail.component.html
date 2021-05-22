@@ -3,7 +3,8 @@
 <div *ngIf="stock">
     <p>{{stock.name}}</p>
     <p>{{stock.symbol}}</p>
+    <p>{{stock.price}}</p>
 
-    <button (click)="updatePrice()" class="btn btn-primary">Update</button>
+    <button (click)="updatePrice(stock)" class="btn btn-primary">Update</button>
     <button (click)="deleteStock(stock.id)" class="btn btn-danger">Delete</button>
 </div>
