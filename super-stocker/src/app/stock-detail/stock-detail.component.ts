@@ -81,21 +81,30 @@ export class StockDetailComponent implements OnInit {
     });
   }
 
-  getTimeSeries(): void {
-    this.twelveDataService.getTimeSeriesData("AAPL", "1month", 6).subscribe((response) => {
-      console.log("Time Series", response);
-      this.lineChartData = this.generateChartData(response, "1month", 6);
+  getTimeSeries(symbol: string, interval: string, size: number): void {
+    this.twelveDataService.getTimeSeriesData(symbol, interval, size).subscribe((response) => {
+      if (response["code"] !== 429) {
+        console.log("Time Series", response);
+        this.generateChartData(response, symbol, size);
+      } else {
+        alert("Too many requests. Try again in a minute");
+      }
     });
   }
 
-  generateChartData(data: Object, interval: string, size: number): ChartDataSets[] {
+  // lineChartLabels: Label[] = ['January', 'February', 'March', 'April', 'May', 'June'];
+
+  generateChartData(data: Object, interval: string, size: number) {
     let actualData = data["values"];
     let chartData: ChartDataSets[] = [];
+    let chartLabels: Label[] = [];
     
     let closingDataSet: ChartDataSets = {};
     let closingValues: number[] = [];
     let closingDataLabel: string = "Closing price";
+
     for (let idx in actualData) {
+      chartLabels.push(actualData[idx].datetime);
       closingValues.push(actualData[idx].close);
     }
     closingDataSet.data = closingValues;
@@ -103,7 +112,8 @@ export class StockDetailComponent implements OnInit {
 
     chartData.push(closingDataSet);
 
-    return chartData;
+    this.lineChartData = chartData.reverse();
+    this.lineChartLabels = chartLabels.reverse();
     
   }
 

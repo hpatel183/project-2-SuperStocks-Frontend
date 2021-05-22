@@ -8,9 +8,13 @@
     <button (click)="updatePrice(stock)" class="btn btn-primary">Update</button>
     <button (click)="deleteStock(stock.id)" class="btn btn-danger">Delete</button><br>
 
-    <button (click)="getTimeSeries()">Time Series</button>
-
     <div>
+        <div class="timeSeriesButtons">
+            <button (click)="getTimeSeries(stock.symbol, '1day', 7)">7D</button>
+            <button (click)="getTimeSeries(stock.symbol, '1week', 4)">1M</button>
+            <button (click)="getTimeSeries(stock.symbol, '1month', 6)">6M</button>
+            <button (click)="getTimeSeries(stock.symbol, '1month', 12)">1Y</button>
+        </div>
         <canvas baseChart
             [datasets]="lineChartData" 
             [labels]="lineChartLabels" 
