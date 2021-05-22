@@ -30,14 +30,24 @@ export class StockDetailComponent implements OnInit {
   }
 
   updatePrice(stock: Stock) {
-    this.twelveDataService.updateStockPrice(stock.symbol).subscribe((response) => {
-      console.log('Got new price, sending value to DB...');
-      // call to backend API to update DB
-      this.stockService.updatePrice(stock, response["price"]).subscribe((response) => {
-        console.log("Stock updated:", response);
-        this.stock.price = response.price;
-      });
-    })
+    if (stock.price >= 0) {
+      this.twelveDataService.updateStockPrice(stock.symbol).subscribe((response) => {
+        console.log('Got new price, sending value to DB...');
+        // call to backend API to update DB
+        if (response["price"] >= 0) {
+          this.stockService.updatePrice(stock, response["price"]).subscribe((response) => {
+            console.log("Stock updated:", response);
+            this.stock.price = response.price;
+          }, (err) => {
+            console.log("API update request failed...", err);
+          });
+        } else {
+          alert("Too many requests. Try again in a minute.");
+        }
+      })
+    } else {
+      alert("Something went wrong with that stock. Try removing it and adding it back again.");
+    }
   }
 
   deleteStock(id: number): void {

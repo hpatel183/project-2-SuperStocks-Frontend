@@ -15,6 +15,8 @@ import { RegisterFormComponent } from './register-form/register-form.component';
 import { ProfileComponent } from './profile/profile.component';
 import { LogoutComponent } from './logout/logout.component';
 import { StockDetailComponent } from './stock-detail/stock-detail.component';
+import { UserListComponent } from './user-list/user-list.component';
+import { UserDialogComponent } from './user-dialog/user-dialog.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { StockDetailComponent } from './stock-detail/stock-detail.component';
     RegisterFormComponent,
     ProfileComponent,
     LogoutComponent,
-    StockDetailComponent
+    StockDetailComponent,
+    UserListComponent,
+    UserDialogComponent
   ],
   imports: [
     BrowserModule,

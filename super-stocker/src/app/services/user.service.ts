@@ -14,8 +14,14 @@ export class UserService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getCurrentUser() {
+  getCurrentUser(): Observable<User> {
     return this.httpClient.get<User>(`http://localhost:8080/SuperStocks/current`, {
+      withCredentials: true
+    });
+  }
+
+  getAllUsers(): Observable<User[]> {
+    return this.httpClient.get<User[]>(`http://localhost:8080/SuperStocks/user`, {
       withCredentials: true
     });
   }

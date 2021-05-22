@@ -64,6 +64,9 @@ export class DashboardComponent implements OnInit {
   }
 
   filterStocksByUnitedStates(stocks: Object[]): Stock {
+    // Initialize empty stock to be updated by API response
+    // Stock price set to 0 as a workaround to the API limiting requests/min
+    // Ideally, the price would also be requested and added to the stock when adding to your portfolio
     let obj = {
       id: 0,
       name: '',
