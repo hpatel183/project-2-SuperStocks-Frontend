@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ChartsModule } from 'ng2-charts';
 
 import { AppComponent } from './app.component';
 import { LoginFormComponent } from './login-form/login-form.component';
@@ -18,6 +19,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { StockDetailComponent } from './stock-detail/stock-detail.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserDialogComponent } from './user-dialog/user-dialog.component';
+import * as Chart from 'chart.js';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,8 @@ import { UserDialogComponent } from './user-dialog/user-dialog.component';
     BrowserAnimationsModule,
     MatCardModule,
     MatButtonModule,
-    MatDialogModule
+    MatDialogModule,
+    ChartsModule
   ],
   providers: [
     {

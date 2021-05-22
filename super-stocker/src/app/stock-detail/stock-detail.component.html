@@ -6,5 +6,19 @@
     <p>{{stock.price}}</p>
 
     <button (click)="updatePrice(stock)" class="btn btn-primary">Update</button>
-    <button (click)="deleteStock(stock.id)" class="btn btn-danger">Delete</button>
+    <button (click)="deleteStock(stock.id)" class="btn btn-danger">Delete</button><br>
+
+    <button (click)="getTimeSeries()">Time Series</button>
+
+    <div>
+        <canvas baseChart
+            [datasets]="lineChartData" 
+            [labels]="lineChartLabels" 
+            [options]="lineChartOptions"
+            [colors]="lineChartColors" 
+            [legend]="lineChartLegend" 
+            [chartType]="lineChartType" 
+            [plugins]="lineChartPlugins">
+        </canvas>
+    </div>
 </div>

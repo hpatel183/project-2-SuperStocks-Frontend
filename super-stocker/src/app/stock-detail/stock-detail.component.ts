@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
+import { ChartDataSets, ChartOptions } from 'chart.js';
+import { Color, Label } from 'ng2-charts';
+
 import { Stock } from '../../model/Stock';
 import { StockService } from '../services/stock.service';
 import { TwelveDataService } from '../services/twelve-data.service';
@@ -14,6 +17,28 @@ import { TwelveDataService } from '../services/twelve-data.service';
 export class StockDetailComponent implements OnInit {
 
   stock: Stock;
+
+  lineChartData: ChartDataSets[] = [
+    { data: [], label: "No interval selected"}
+  ];
+
+  lineChartLabels: Label[] = ['January', 'February', 'March', 'April', 'May', 'June'];
+
+  lineChartOptions = {
+    responsive: true,
+    maintainAspectRatio: false
+  };
+
+  lineChartColors: Color[] = [
+    {
+      borderColor: 'black',
+      backgroundColor: 'rgba(255,255,0,0.28)',
+    },
+  ];
+
+  lineChartLegend = true;
+  lineChartPlugins = [];
+  lineChartType = 'line';
 
   constructor(private stockService: StockService, private twelveDataService: TwelveDataService, private route: ActivatedRoute, private location: Location) { }
 
@@ -54,6 +79,32 @@ export class StockDetailComponent implements OnInit {
     this.stockService.deleteStock(id).subscribe((response) => {
       this.goBack();
     });
+  }
+
+  getTimeSeries(): void {
+    this.twelveDataService.getTimeSeriesData("AAPL", "1month", 6).subscribe((response) => {
+      console.log("Time Series", response);
+      this.lineChartData = this.generateChartData(response, "1month", 6);
+    });
+  }
+
+  generateChartData(data: Object, interval: string, size: number): ChartDataSets[] {
+    let actualData = data["values"];
+    let chartData: ChartDataSets[] = [];
+    
+    let closingDataSet: ChartDataSets = {};
+    let closingValues: number[] = [];
+    let closingDataLabel: string = "Closing price";
+    for (let idx in actualData) {
+      closingValues.push(actualData[idx].close);
+    }
+    closingDataSet.data = closingValues;
+    closingDataSet.label = closingDataLabel;
+
+    chartData.push(closingDataSet);
+
+    return chartData;
+    
   }
 
   goBack(): void {

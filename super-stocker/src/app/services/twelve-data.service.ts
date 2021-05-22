@@ -7,19 +7,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class TwelveDataService {
 
-
-  proxyURL: string = "http://ec2-3-140-201-86.us-east-2.compute.amazonaws.com:8081/";
-
   key: string = "d256da9eb6394a3f9372bfcb29b6c51d";
 
   httpClient: HttpClient;
 
   constructor(httpClient: HttpClient) {
     this.httpClient = httpClient;
-  }
-
-  createAuthorizationHeader(headers: HttpHeaders) {
-    headers.append("Access-Control-Allow-Origin", "*");
   }
 
   getStockBySymbol(symbol: string): Observable<Object[]> {
@@ -36,6 +29,15 @@ export class TwelveDataService {
     headers.append("Access-Control-Allow-Origin", "*");
 
     return this.httpClient.get<Object>(`https://api.twelvedata.com/price?symbol=${symbol.toUpperCase()}&apikey=${this.key}`, {
+      headers: headers
+    });
+  }
+
+  getTimeSeriesData(symbol: string, interval: string, size: number): Observable<Object> {
+    let headers = new HttpHeaders();
+    headers.append("Access-Control-Allow-Origin", "*");
+
+    return this.httpClient.get<Object>(`https://api.twelvedata.com/time_series?symbol=${symbol}&interval=${interval}&outputsize=${size}&apikey=${this.key}`, {
       headers: headers
     });
   }
