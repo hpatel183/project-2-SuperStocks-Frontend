@@ -1,3 +1,5 @@
+<app-navbar></app-navbar>
+
 <form>
     <div class="container">
         <label for="stockInput">Stock Symbol:</label>
@@ -20,7 +22,7 @@
             <mat-card-content>
                 <p>{{stock.exchange}}</p>
                 <p>{{stock.type}}</p>
-                <p>{{stock.price}}</p>
+                <p>${{stock.price}}</p>
             </mat-card-content>
         </mat-card>
     </a>

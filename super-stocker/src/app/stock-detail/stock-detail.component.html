@@ -1,16 +1,13 @@
-<!--
-    <button (click)="goBack()" class="btn btn-info">Back to Dashboard</button>
--->
+<app-navbar></app-navbar>
 
 <div *ngIf="stock">
     <div class="stock-cards">
         <div class="heading">
-            <h1>{{stock.symbol}}</h1>
-            <h2>{{stock.name}}</h2>
+            <h1>{{stock.name}} ({{stock.symbol}})</h1>
         </div>
         <p>{{stock.exchange}}</p>
         <p>{{stock.type}}</p>
-        <p>{{stock.price}}</p>
+        <p>${{stock.price}}</p>
     </div>
     <div class="buttons">
         <button (click)="updatePrice(stock)" class="updateButton">Update</button>

@@ -1,0 +1,16 @@
+<div>
+    <nav id="nav_menu">
+        <ul *ngIf="isAdmin">
+            <li class="adminNav"><a routerLink="/dashboard">Dashboard</a></li>
+            <li class="adminNav"><a routerLink="/user-list">Users</a></li>
+            <li class="adminNav"><a routerLink="/profile">Profile</a></li>
+            <li class="adminNav"><a routerLink="/logout">Logout</a></li>
+        </ul>
+        <ul *ngIf="isUser">
+            <li class="userNav"><a routerLink="/dashboard">Dashboard</a></li>
+            <li class="userNav"><a routerLink="/profile">Profile</a></li>
+            <li class="userNav"><a routerLink="/logout">Logout</a></li>
+        </ul>
+    </nav>
+</div>
+<router-outlet></router-outlet>

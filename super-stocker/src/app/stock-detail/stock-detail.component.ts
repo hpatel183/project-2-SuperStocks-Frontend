@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { ChartDataSets, ChartOptions } from 'chart.js';
@@ -40,7 +40,8 @@ export class StockDetailComponent implements OnInit {
   lineChartPlugins = [];
   lineChartType = 'line';
 
-  constructor(private stockService: StockService, private twelveDataService: TwelveDataService, private route: ActivatedRoute, private location: Location) { }
+  constructor(private stockService: StockService, private twelveDataService: TwelveDataService, private route: ActivatedRoute, private location: Location,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.getStock();
@@ -77,25 +78,32 @@ export class StockDetailComponent implements OnInit {
 
   deleteStock(id: number): void {
     this.stockService.deleteStock(id).subscribe((response) => {
-      this.goBack();
+      this.router.navigate(["/dashboard"]);
     });
   }
 
-  getTimeSeries(): void {
-    this.twelveDataService.getTimeSeriesData("AAPL", "1month", 6).subscribe((response) => {
-      console.log("Time Series", response);
-      this.lineChartData = this.generateChartData(response, "1month", 6);
+  getTimeSeries(symbol: string, interval: string, size: number): void {
+    this.twelveDataService.getTimeSeriesData(symbol, interval, size).subscribe((response) => {
+      if (response["code"] !== 429) {
+        console.log("Time Series", response);
+        this.generateChartData(response, symbol, size);
+      } else {
+        alert("Too many requests. Try again in a minute");
+      }
     });
   }
 
-  generateChartData(data: Object, interval: string, size: number): ChartDataSets[] {
+  generateChartData(data: Object, interval: string, size: number) {
     let actualData = data["values"];
     let chartData: ChartDataSets[] = [];
+    let chartLabels: Label[] = [];
     
     let closingDataSet: ChartDataSets = {};
     let closingValues: number[] = [];
     let closingDataLabel: string = "Closing price";
+
     for (let idx in actualData) {
+      chartLabels.push(actualData[idx].datetime);
       closingValues.push(actualData[idx].close);
     }
     closingDataSet.data = closingValues;
@@ -103,12 +111,9 @@ export class StockDetailComponent implements OnInit {
 
     chartData.push(closingDataSet);
 
-    return chartData;
+    this.lineChartData = chartData.reverse();
+    this.lineChartLabels = chartLabels.reverse();
     
-  }
-
-  goBack(): void {
-    this.location.back();
   }
 
 }

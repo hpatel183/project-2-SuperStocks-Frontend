@@ -20,6 +20,7 @@ import { StockDetailComponent } from './stock-detail/stock-detail.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserDialogComponent } from './user-dialog/user-dialog.component';
 import * as Chart from 'chart.js';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import * as Chart from 'chart.js';
     LogoutComponent,
     StockDetailComponent,
     UserListComponent,
-    UserDialogComponent
+    UserDialogComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

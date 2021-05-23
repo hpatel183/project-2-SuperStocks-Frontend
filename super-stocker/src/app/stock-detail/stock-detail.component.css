@@ -16,7 +16,7 @@ canvas {
 }
 
 .buttons {
-    padding: 0px 465px;
+    text-align: center;
     margin: auto;
 }
 
@@ -52,7 +52,6 @@ button {
 .timeSeriesButtons button {
     width: 24%;
     height: 50px;
-    float: right;
     background-color: #68C3D4;
     color: white;
     padding: 0px 20px;

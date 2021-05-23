@@ -26,14 +26,4 @@ export class RegisterFormComponent {
     this.router = router;
   }
 
-  registerUser() {
-    this.userService.registerUser(this.usernameInput, this.passwordInput, this.emailInput, this.firstNameInput, this.lastNameInput, this.roleInput)
-      .subscribe((response) => {
-        console.log("Retrieved response: ", response);
-      if (response.message == "Successfully registered user") {
-        this.router.navigate(['/dashboard']);
-      }
-    });
-  }
-
 }
