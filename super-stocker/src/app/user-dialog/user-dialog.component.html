@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>Register New User</h1>
+<h1 mat-dialog-title>Update User Information</h1>
 <div mat-dialog-content class="container">
     <form>
         <div class="form-group">
@@ -21,17 +21,9 @@
             <label for="lastNameInput">Last Name</label>
             <input [(ngModel)]="lastNameInput" type="text" class="form-control" name="lastName" id="lastNameInput" placeholder="Enter last name">
         </div>
-        <div class="form-group">
-            <label for="roleInput">Role</label>
-            <select [(ngModel)]="roleInput" class="form-control" name="role" id="roleInput">
-              <option id="none" disabled>Select a Role</option>
-              <option id="User" value="User">User</option>
-              <option id="Admin" value="Admin">Admin</option> 
-            </select>
-        </div>
     </form>
 </div>
 <div mat-dialog-actions>
-    <button mat-button [mat-dialog-close]="[usernameInput, passwordInput, emailInput, firstNameInput, lastNameInput, roleInput]" class="btn btn-primary">Register</button>
+    <button mat-button [mat-dialog-close]="[user.id, usernameInput, passwordInput, emailInput, firstNameInput, lastNameInput]" class="btn btn-primary">Update</button>
     <button mat-button mat-dialog-close class="btn btn-danger">Cancel</button>
 </div>

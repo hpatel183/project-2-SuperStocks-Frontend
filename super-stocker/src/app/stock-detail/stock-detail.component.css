@@ -1,0 +1,66 @@
+canvas {
+    width: 800px;
+    height: 300px;
+}
+
+.stock-cards {
+    margin: auto;
+    width: 30%;
+    padding: 10px;
+    text-align: center;
+}
+
+.heading {
+    color: black;
+    margin: auto;
+}
+
+.buttons {
+    text-align: center;
+    margin: auto;
+}
+
+button {
+    width: 190px;
+    height: 50px;
+    padding: 10px 10px;
+    margin: 10px 10px 0px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #68C3D4;
+    border: none;
+    display: inline-block;
+}
+
+.updateButton:hover {
+    background-color: blue;
+}
+
+.deleteButton:hover {
+    background-color: red;
+}
+
+.timeSeriesButtons {
+    width: 97%;
+    height: 100px;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    padding: 10px 0px 0px 0px;
+    margin: 20px 10px 0px 20px;
+}
+
+.timeSeriesButtons button {
+    width: 24%;
+    height: 50px;
+    background-color: #68C3D4;
+    color: white;
+    padding: 0px 20px;
+    margin: 10px 5px 0px 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.timeSeriesButtons button:hover {
+    background-color: #568EA3;
+}

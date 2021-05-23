@@ -8,16 +8,11 @@ input {
     box-sizing: border-box;
 }
 
-label {
-    font-size: 18px;
-}
-
 button {
-    width: 47%;
+    width: 49%;
     background-color: #68C3D4;
     color: white;
-    padding: 14px 5px;
-    margin: 10px;
+    padding: 10px 10px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -28,9 +23,8 @@ button:hover {
 }
 
 .container {
-    width: 800px;
+    width: 600px;
     border-radius: 5px;
-    background-color: #FFE8D1;
-    padding: 25px 20px;
-    margin-top: 25px;
+    background-color: #FFFFFF;
+    padding: 20px;
 }

@@ -1,0 +1,32 @@
+input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button {
+    width: 100%;
+    background-color: #68C3D4;
+    color: white;
+    padding: 14px 20px;
+    margin: 10px 0px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #568EA3;
+}
+
+.container {
+    width: 500px;
+    border-radius: 5px;
+    background-color: #FFE8D1;
+    padding: 20px;
+    margin-top: 20px;
+}
