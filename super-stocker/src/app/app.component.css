@@ -13,11 +13,8 @@ nav {
 
 #nav_menu ul {
     width: 100%;
-    /* full width of body */
     list-style-type: none;
-    /*no bullets*/
     position: relative;
-    /* So the first submenu can be positioned within the main menu */
 }
 
 #nav_menu ul ul {
