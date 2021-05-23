@@ -33,7 +33,6 @@ export class ErrorIntercept implements HttpInterceptor {
                                 
                         }
                     }
-                    console.log(errorMessage);
                     return throwError(errorMessage);
                 })
             )
