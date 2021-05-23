@@ -1,10 +1,10 @@
 <form>
-    <div class="form-group">
-      <label for="stockInput">Stock Symbol:</label>
-      <input [(ngModel)]="stockInput" type="text" class="form-control" name="stock" id="stockInput" placeholder="Enter stock symbol">
-      <button (click)="addStock()" class="btn btn-success">Submit</button>
+    <div class="container">
+        <label for="stockInput">Stock Symbol:</label>
+        <input [(ngModel)]="stockInput" type="text" class="form-control" name="stock" id="stockInput" placeholder="Enter stock symbol">
+        <button (click)="addStock()" class="btn btn-success">Submit</button>
     </div>
-  </form>
+</form>
 
 <div *ngIf="stocks.length == 0">
     <h3>No stocks in portfolio. Try adding some!</h3>

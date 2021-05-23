@@ -2,8 +2,64 @@ a {
     text-decoration: none;
 }
 
-mat-card {
-    margin: 5px;
-    width: 200px;
+input {
+    width: 75%;
+    padding: 12px 5px;
+    margin: 8px 0 0 5px;
     display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button {
+    float: right;
+    background-color: #68C3D4;
+    color: white;
+    padding: 10px 20px;
+    margin: 10px 0 0 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #568EA3;
+}
+
+.container {
+    width: 800px;
+    border-radius: 5px;
+    background-color: #FFE8D1;
+    padding: 20px;
+}
+
+h3 {
+    padding: 20px 50px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.stock-cards {
+    width: 1300px;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    padding: 10px 10px;
+    margin: 20px 30px;
+}
+
+mat-card {
+    margin: 10px;
+    width: 300px;
+    min-height: 200px;
+    display: inline-block;
+    background-color: #FFFFFF;
+    border: 1px #568EA3 solid;
+}
+
+mat-card-title {
+    color: #568EA3;
+}
+
+mat-card-content {
+    margin: 15px;
 }

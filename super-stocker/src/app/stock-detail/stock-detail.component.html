@@ -1,24 +1,30 @@
-<button (click)="goBack()" class="btn btn-info">Back to Dashboard</button>
+<!--
+    <button (click)="goBack()" class="btn btn-info">Back to Dashboard</button>
+-->
 
 <div *ngIf="stock">
-    <p>{{stock.name}}</p>
-    <p>{{stock.symbol}}</p>
-    <p>{{stock.price}}</p>
-
-    <button (click)="updatePrice(stock)" class="btn btn-primary">Update</button>
-    <button (click)="deleteStock(stock.id)" class="btn btn-danger">Delete</button><br>
-
-    <button (click)="getTimeSeries()">Time Series</button>
+    <div class="stock-cards">
+        <div class="heading">
+            <h1>{{stock.symbol}}</h1>
+            <h2>{{stock.name}}</h2>
+        </div>
+        <p>{{stock.exchange}}</p>
+        <p>{{stock.type}}</p>
+        <p>{{stock.price}}</p>
+    </div>
+    <div class="buttons">
+        <button (click)="updatePrice(stock)" class="updateButton">Update</button>
+        <button (click)="deleteStock(stock.id)" class="deleteButton">Delete</button><br>
+    </div>
 
     <div>
-        <canvas baseChart
-            [datasets]="lineChartData" 
-            [labels]="lineChartLabels" 
-            [options]="lineChartOptions"
-            [colors]="lineChartColors" 
-            [legend]="lineChartLegend" 
-            [chartType]="lineChartType" 
-            [plugins]="lineChartPlugins">
+        <div class="timeSeriesButtons">
+            <button (click)="getTimeSeries(stock.symbol, '1day', 7)">7D</button>
+            <button (click)="getTimeSeries(stock.symbol, '1week', 4)">1M</button>
+            <button (click)="getTimeSeries(stock.symbol, '1month', 6)">6M</button>
+            <button (click)="getTimeSeries(stock.symbol, '1month', 12)">1Y</button>
+        </div>
+        <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType" [plugins]="lineChartPlugins">
         </canvas>
     </div>
 </div>
