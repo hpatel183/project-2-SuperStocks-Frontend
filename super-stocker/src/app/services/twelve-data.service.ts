@@ -8,6 +8,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class TwelveDataService {
 
   key: string = "d256da9eb6394a3f9372bfcb29b6c51d";
+  key2: string = "352427c6c009470dbdf810898b026801";
 
   httpClient: HttpClient;
 
@@ -37,7 +38,7 @@ export class TwelveDataService {
     let headers = new HttpHeaders();
     headers.append("Access-Control-Allow-Origin", "*");
 
-    return this.httpClient.get<Object>(`https://api.twelvedata.com/time_series?symbol=${symbol}&interval=${interval}&outputsize=${size}&apikey=${this.key}`, {
+    return this.httpClient.get<Object>(`https://api.twelvedata.com/time_series?symbol=${symbol}&interval=${interval}&outputsize=${size}&apikey=${this.key2}`, {
       headers: headers
     });
   }
