@@ -23,9 +23,9 @@ export class LogoutComponent implements OnInit {
   ngOnInit(): void {
     this.userService.logoutUser().subscribe((response) => {
       this.logoutMessage = response.message;
-        setTimeout(() => {
+        // setTimeout(() => {
           this.router.navigate(['/login']);
-        }, 1000);
+        // }, 1000);
     });
   }
 
