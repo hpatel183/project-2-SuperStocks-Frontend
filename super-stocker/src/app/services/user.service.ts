@@ -10,18 +10,18 @@ import { User } from 'src/model/User';
 })
 export class UserService {
 
-  proxyUrl: string = "http://ec2-3-140-201-86.us-east-2.compute.amazonaws.com:8081/";
+  apiURL: string = "http://ec2-54-82-79-227.compute-1.amazonaws.com:8080/SuperStocks/";
 
   constructor(private httpClient: HttpClient) { }
 
   getCurrentUser(): Observable<User> {
-    return this.httpClient.get<User>(`http://localhost:8080/SuperStocks/current`, {
+    return this.httpClient.get<User>(`${this.apiURL}current`, {
       withCredentials: true
     });
   }
 
   getAllUsers(): Observable<User[]> {
-    return this.httpClient.get<User[]>(`http://localhost:8080/SuperStocks/user`, {
+    return this.httpClient.get<User[]>(`${this.apiURL}user`, {
       withCredentials: true
     });
   }
@@ -35,7 +35,7 @@ export class UserService {
 
     console.log(loginInfo);
 
-    return this.httpClient.post<Message>(`http://localhost:8080/SuperStocks/login`, loginInfo, {
+    return this.httpClient.post<Message>(`${this.apiURL}login`, loginInfo, {
       withCredentials: true
     });
 
@@ -52,7 +52,7 @@ export class UserService {
       role: role
     }
 
-    return this.httpClient.post<Message>(`http://localhost:8080/SuperStocks/register`, registerInfo, {
+    return this.httpClient.post<Message>(`${this.apiURL}register`, registerInfo, {
       withCredentials: true
     });
   }
@@ -69,14 +69,14 @@ export class UserService {
 
     console.log("UserInfo", updateInfo);
 
-    return this.httpClient.put<Message>(`http://localhost:8080/SuperStocks/user/${id}`, updateInfo, {
+    return this.httpClient.put<Message>(`${this.apiURL}user/${id}`, updateInfo, {
       withCredentials: true
     });
 
   }
 
   logoutUser(): Observable<Message> {
-    return this.httpClient.post<Message>(`http://localhost:8080/SuperStocks/logout`, {}, {
+    return this.httpClient.post<Message>(`${this.apiURL}logout`, {}, {
       withCredentials: true
     });
   }

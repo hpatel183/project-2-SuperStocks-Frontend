@@ -10,13 +10,13 @@ import { Message } from 'src/model/Message';
 })
 export class StockService {
 
-  proxyUrl: string = "http://ec2-3-140-201-86.us-east-2.compute.amazonaws.com:8081/";
+  apiURL: string = "http://ec2-54-82-79-227.compute-1.amazonaws.com:8080/SuperStocks/";
 
   constructor(private httpClient: HttpClient) { }
 
   getAllStocks(): Observable<Array<Stock>> {
 
-    return this.httpClient.get<Array<Stock>>(`http://localhost:8080/SuperStocks/stock`, {
+    return this.httpClient.get<Array<Stock>>(`${this.apiURL}stock`, {
       withCredentials: true
     });
 
@@ -24,7 +24,7 @@ export class StockService {
 
   getExistingStock(stockSymbol: string): Observable<Stock> {
 
-    return this.httpClient.get<Stock>(`http://localhost:8080/SuperStocks/stock/${stockSymbol}`, {
+    return this.httpClient.get<Stock>(`${this.apiURL}stock/${stockSymbol}`, {
       withCredentials: true
     });
 
@@ -40,7 +40,7 @@ export class StockService {
       type: stock.type
     }
     
-    return this.httpClient.post<Stock>(`http://localhost:8080/SuperStocks/stock/`, stockTemplate, {
+    return this.httpClient.post<Stock>(`${this.apiURL}stock/`, stockTemplate, {
       withCredentials: true
     });
 
@@ -56,13 +56,13 @@ export class StockService {
       type: stock.type
     }
     console.log("Adding new price for stock:", stockTemplate);
-    return this.httpClient.patch<Stock>(`http://localhost:8080/SuperStocks/stock/${stock.id}`, stockTemplate, {
+    return this.httpClient.patch<Stock>(`${this.apiURL}stock/${stock.id}`, stockTemplate, {
       withCredentials: true
     });
   }
 
   deleteStock(id: number) {
-    return this.httpClient.delete<Message>(`http://localhost:8080/SuperStocks/stock/${id}`, {
+    return this.httpClient.delete<Message>(`${this.apiURL}stock/${id}`, {
       withCredentials: true
     })
   }
