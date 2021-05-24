@@ -10,7 +10,7 @@ import { User } from 'src/model/User';
 })
 export class UserService {
 
-  apiURL: string = "http://localhost:8080/SuperStocks/";
+  apiURL: string = "http://ec2-54-82-79-227.compute-1.amazonaws.com:8080/SuperStocks/";
 
   constructor(private httpClient: HttpClient) { }
 
