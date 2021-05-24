@@ -5,7 +5,25 @@ Super Stocks is a lightweight application for tracking stocks. Each user will ha
 ## Backend Repository:
 - https://github.com/keithmorel/project-2-SuperStocks-Backend
 
-# Front-End Technologies
+## Front-End Technologies
 - Angular
 - HTML/CSS/Bootstrap
 - Selenium
+
+## Startup Guide
+1. Clone the Repository:  
+```git clone https://github.com/hpatel183/project-2-SuperStocks-Frontend.git```
+
+2. CD into project folder:  
+```cd super-stocker```
+
+3. Download dependencies:  
+```npm install```
+
+4. Update apiURL variable in 'src/app/services/user.service.ts' and 'src/app/services/stock.service.ts' to point to your backend:  
+```apiURL: string = "<your-backend-link>"```
+
+5. Follow instructions in Backend Repository to launch backend
+
+6. Serve the application:  
+```ng serve```
