@@ -5,6 +5,12 @@ Super Stocks is a lightweight application for tracking stocks. Each user will ha
 ## Backend Repository:
 - https://github.com/keithmorel/project-2-SuperStocks-Backend
 
+## Selenium Tests Repository:
+- https://github.com/keithmorel/project-2-SeleniumTests
+
+## Documentation Repository:
+- https://github.com/hpatel183/project-2-SuperStocks-Documentation
+
 ## Front-End Technologies
 - Angular
 - HTML/CSS/Bootstrap
