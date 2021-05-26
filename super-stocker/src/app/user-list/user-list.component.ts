@@ -38,7 +38,7 @@ export class UserListComponent implements OnInit {
           lastName: result[5],
           role: null
         }
-        this.userService.updateUserInfo(updateUser.id, updateUser.username, updateUser.password, updateUser.email, updateUser.firstName, updateUser.lastName)
+        this.userService.updateUserInfoByAdmin(updateUser.id, updateUser.username, updateUser.password, updateUser.email, updateUser.firstName, updateUser.lastName)
           .subscribe((response) => {
             console.log("Updated user:", response);
             this.getAllUsers();
