@@ -75,6 +75,24 @@ export class UserService {
 
   }
 
+  updateUserInfoByAdmin(id: number, username: string, password: string, email: string, firstName: string, lastName: string): Observable<Message> {
+
+    let updateInfo = {
+      username: username,
+      password: password,
+      email: email,
+      firstName: firstName,
+      lastName: lastName
+    }
+
+    console.log("UserInfo", updateInfo);
+
+    return this.httpClient.put<Message>(`${this.apiURL}admin/user/${id}`, updateInfo, {
+      withCredentials: true
+    });
+
+  }
+
   logoutUser(): Observable<Message> {
     return this.httpClient.post<Message>(`${this.apiURL}logout`, {}, {
       withCredentials: true
