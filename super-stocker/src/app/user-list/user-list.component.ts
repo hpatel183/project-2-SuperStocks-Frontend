@@ -44,7 +44,6 @@ export class UserListComponent implements OnInit {
             this.getAllUsers();
           });
       }
-      console.log("Dialog result", typeof result);
     });
   }
 

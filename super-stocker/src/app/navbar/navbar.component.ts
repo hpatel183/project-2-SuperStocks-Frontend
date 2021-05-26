@@ -17,7 +17,6 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     this.userService.getCurrentUser().subscribe((response) => {
       if (!response["message"]) {
-        console.log(response);
         if (response["userRole"].roleName == 'Admin') {
           this.isAdmin = true;
           this.isUser = false;

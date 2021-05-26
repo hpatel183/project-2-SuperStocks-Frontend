@@ -33,8 +33,6 @@ export class UserService {
       password: password
     }
 
-    console.log(loginInfo);
-
     return this.httpClient.post<Message>(`${this.apiURL}login`, loginInfo, {
       withCredentials: true
     });
@@ -67,8 +65,6 @@ export class UserService {
       lastName: lastName
     }
 
-    console.log("UserInfo", updateInfo);
-
     return this.httpClient.put<Message>(`${this.apiURL}user/${id}`, updateInfo, {
       withCredentials: true
     });
@@ -84,8 +80,6 @@ export class UserService {
       firstName: firstName,
       lastName: lastName
     }
-
-    console.log("UserInfo", updateInfo);
 
     return this.httpClient.put<Message>(`${this.apiURL}admin/user/${id}`, updateInfo, {
       withCredentials: true

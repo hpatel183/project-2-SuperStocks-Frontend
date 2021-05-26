@@ -49,7 +49,6 @@ export class StockDetailComponent implements OnInit {
 
   getStock(): void {
     const stockSymbol = this.route.snapshot.paramMap.get("symbol");
-    console.log("symbol", stockSymbol);
     this.stockService.getExistingStock(stockSymbol).subscribe((response) => {
       this.stock = response;
     });
@@ -85,7 +84,6 @@ export class StockDetailComponent implements OnInit {
   getTimeSeries(symbol: string, interval: string, size: number): void {
     this.twelveDataService.getTimeSeriesData(symbol, interval, size).subscribe((response) => {
       if (response["code"] !== 429) {
-        console.log("Time Series", response);
         this.generateChartData(response, symbol, size);
       } else {
         alert("Too many requests. Try again in a minute");

@@ -32,7 +32,7 @@ export class LoginFormComponent {
 
   loginUser() {
     this.userService.loginUser(this.usernameInput, this.passwordInput).subscribe((response) => {
-      console.log("Retrieved response: ", response);
+      console.log(response.message);
       if (response.message == "Successfully logged in") {
         this.router.navigate(['/dashboard']);
       }

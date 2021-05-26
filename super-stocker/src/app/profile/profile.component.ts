@@ -41,7 +41,7 @@ export class ProfileComponent implements OnInit {
   updateUser() {
     this.userService.updateUserInfo(this.userId, this.usernameInput, this.passwordInput, this.emailInput, this.firstNameInput, this.lastNameInput)
       .subscribe((response) => {
-        console.log("Response", response);
+        console.log("Updated user information:", response);
         this.getUserInfo();
       });
   };
